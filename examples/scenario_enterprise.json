@@ -1,0 +1,87 @@
+{
+  "name": "Synthetic enterprise multi-tier system",
+  "disclaimer": "Illustrative scenario; not raw experimental data from the paper.",
+  "attack_paths": [
+    {
+      "id": "public-ssrf-role-rds-exfil",
+      "labels": [
+        "public-ingress",
+        "ssrf",
+        "iam-role",
+        "credential-access",
+        "exfiltration"
+      ],
+      "steps": [
+        {
+          "exploitability": 0.82,
+          "privilege": 0.35,
+          "complexity": 0.42,
+          "detection_difficulty": 0.67
+        },
+        {
+          "exploitability": 0.76,
+          "privilege": 0.52,
+          "complexity": 0.48,
+          "detection_difficulty": 0.64,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.68,
+          "privilege": 0.65,
+          "complexity": 0.4,
+          "detection_difficulty": 0.61,
+          "conditional_probability": 0.69
+        },
+        {
+          "exploitability": 0.61,
+          "privilege": 0.7,
+          "complexity": 0.45,
+          "detection_difficulty": 0.59,
+          "conditional_probability": 0.63
+        },
+        {
+          "exploitability": 0.58,
+          "privilege": 0.75,
+          "complexity": 0.5,
+          "detection_difficulty": 0.62,
+          "conditional_probability": 0.6
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 10.0,
+        "business_criticality": 9.0,
+        "operational_impact": 8.0
+      }
+    },
+    {
+      "id": "api-credential-rds",
+      "steps": [
+        {
+          "exploitability": 0.73,
+          "privilege": 0.4,
+          "complexity": 0.46,
+          "detection_difficulty": 0.6
+        },
+        {
+          "exploitability": 0.64,
+          "privilege": 0.67,
+          "complexity": 0.44,
+          "detection_difficulty": 0.62,
+          "conditional_probability": 0.65
+        },
+        {
+          "exploitability": 0.6,
+          "privilege": 0.7,
+          "complexity": 0.42,
+          "detection_difficulty": 0.58,
+          "conditional_probability": 0.62
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 9.0,
+        "business_criticality": 8.5,
+        "operational_impact": 7.5
+      }
+    }
+  ]
+}

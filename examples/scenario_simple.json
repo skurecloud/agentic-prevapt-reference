@@ -1,0 +1,41 @@
+{
+  "name": "Synthetic simple web application",
+  "disclaimer": "Illustrative scenario; not raw experimental data from the paper.",
+  "attack_paths": [
+    {
+      "id": "api-to-dynamodb",
+      "labels": [
+        "api-bypass",
+        "privilege-escalation",
+        "data-access"
+      ],
+      "steps": [
+        {
+          "exploitability": 0.78,
+          "privilege": 0.45,
+          "complexity": 0.3,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.62,
+          "privilege": 0.65,
+          "complexity": 0.45,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.58
+        },
+        {
+          "exploitability": 0.55,
+          "privilege": 0.6,
+          "complexity": 0.4,
+          "detection_difficulty": 0.42,
+          "conditional_probability": 0.64
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 8.0,
+        "business_criticality": 7.0,
+        "operational_impact": 6.0
+      }
+    }
+  ]
+}
