@@ -9,10 +9,10 @@ This repository implements the mathematical core described in the paper:
 - Security Knowledge Graph (SKG) representation
 - step-level exploitability scoring
 - conditional multi-step attack-path probability
-- contextual impact scoring
+- normalized contextual-impact scoring
 - normalized system-risk scoring
 - Bayesian evidence updates
-- overlap-aware path aggregation with explicit joint-probability inputs
+- optional overlap-aware path-score aggregation with explicit joint-probability inputs
 - reproducible scenario execution with deterministic seeds
 
 ## Important reproducibility note
@@ -46,7 +46,9 @@ R_i = P(A_i) * I(A_i)
 
 P(A_i) = P(s_1) * product(P(s_j | s_(j-1)))
 
-P(s_j) = sigmoid(b + wE*E + wR*R + wC*C + wD*D)
+P(s_1) = sigmoid(b + wE*E + wR*R + wC*C + wD*D)
+
+For j > 1, P(s_j | s_(j-1)) must be supplied explicitly.
 
 I(A_i) = alpha*Ds + beta*Br + gamma*Oi
 
@@ -59,13 +61,25 @@ Bayesian evidence update:
 P(A_i | E) = P(E | A_i) * P(A_i) / P(E)
 ```
 
-For overlapping paths, exact joint probabilities may be supplied explicitly:
+The quantity `R_i` is a dimensionless prioritization score because impact is
+normalized; it is not an actuarial expected loss or breach probability.
+
+For two overlapping path events, exact joint probabilities may be supplied:
 
 ```text
 P(A union B) = P(A) + P(B) - P(A intersect B)
 ```
 
-The implementation deliberately does not infer arbitrary joint probabilities from shared graph nodes, because doing so would add unsupported assumptions.
+For multiple paths, the engine optionally applies a documented second-order
+pairwise correction.  Each joint term is weighted by the smaller of the two
+path impacts.  Without explicit joints, the engine labels its result
+`additive_without_overlap_correction`; it never infers joint probabilities from
+shared graph nodes.
+
+The corrected paper value for mean scenario-specific modeled-score reduction is
+79.7%, reported as 80%.  This is the arithmetic mean of the three unrounded
+scenario reductions, not a breach-probability estimate and not a value computed
+from the rounded mean scores.
 
 ## Repository layout
 

@@ -38,7 +38,7 @@ class StepFeatures:
 
 @dataclass(frozen=True)
 class ImpactFeatures:
-    """Business impact inputs on a 0-10 scale."""
+    """Normalized business-impact inputs on a 0-10 prioritization scale."""
 
     data_sensitivity: float
     business_criticality: float
@@ -100,15 +100,14 @@ class RiskModel:
         first = self.step_probability(path.steps[0])
         probability = first
 
-        for step in path.steps[1:]:
-            # Explicit conditional probability takes precedence. When it is
-            # unavailable, the step model is used as a transparent fallback.
-            conditional = (
-                step.conditional_probability
-                if step.conditional_probability is not None
-                else self.step_probability(step)
-            )
-            probability *= conditional
+        for index, step in enumerate(path.steps[1:], start=2):
+            if step.conditional_probability is None:
+                raise ValueError(
+                    f"Path {path.id!r} step {index} requires an explicit "
+                    "conditional_probability because the path model uses "
+                    "P(s_j | s_(j-1))."
+                )
+            probability *= step.conditional_probability
 
         return probability
 
@@ -119,11 +118,20 @@ class RiskModel:
             + self.gamma_operational * impact.operational_impact
         )
 
-    def path_risk(self, path: AttackPath) -> float:
+    def path_score(self, path: AttackPath) -> float:
+        """Return a dimensionless prioritization score, not expected loss."""
         return self.path_probability(path) * self.impact(path.impact)
 
+    def path_risk(self, path: AttackPath) -> float:
+        """Backward-compatible alias for :meth:`path_score`."""
+        return self.path_score(path)
+
+    def raw_system_score(self, paths: Iterable[AttackPath]) -> float:
+        return sum(self.path_score(path) for path in paths)
+
     def raw_system_risk(self, paths: Iterable[AttackPath]) -> float:
-        return sum(self.path_risk(path) for path in paths)
+        """Backward-compatible alias for :meth:`raw_system_score`."""
+        return self.raw_system_score(paths)
 
     def normalize(self, raw_risk: float) -> float:
         if raw_risk < 0:

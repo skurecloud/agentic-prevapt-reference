@@ -18,14 +18,15 @@ def main() -> None:
     result = AssessmentEngine().assess(paths)
 
     output = {
-        "raw_system_risk": round(result.raw_system_risk, 6),
-        "normalized_system_risk": round(result.normalized_system_risk, 6),
+        "raw_system_score": round(result.raw_system_score, 6),
+        "normalized_system_score": round(result.normalized_system_score, 6),
+        "aggregation_method": result.aggregation_method,
         "paths": [
             {
                 "id": p.id,
                 "probability": round(p.probability, 6),
                 "impact": round(p.impact, 6),
-                "risk": round(p.risk, 6),
+                "prioritization_score": round(p.risk, 6),
             }
             for p in result.paths
         ],

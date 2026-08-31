@@ -20,6 +20,16 @@ def test_path_probability_multiplies_conditionals():
     assert abs(model.path_probability(path) - expected) < 1e-12
 
 
+def test_later_step_requires_conditional_probability():
+    import pytest
+
+    model = RiskModel()
+    step = StepFeatures(0.5, 0.5, 0.5, 0.5)
+    path = AttackPath("missing-conditional", (step, step), ImpactFeatures(5, 5, 5))
+    with pytest.raises(ValueError, match="conditional_probability"):
+        model.path_probability(path)
+
+
 def test_impact_default_weights_sum_correctly():
     model = RiskModel()
     impact = ImpactFeatures(10, 10, 10)
