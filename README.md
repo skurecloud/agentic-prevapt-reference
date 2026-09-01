@@ -31,6 +31,8 @@ This separation is intentional and prevents synthetic data from being presented 
 
 ## Quick start
 
+Python 3.9 or newer is supported.
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate     # Windows: .venv\Scripts\activate
