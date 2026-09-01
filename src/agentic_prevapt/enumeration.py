@@ -20,12 +20,15 @@ def enumerate_candidate_paths(
     max_depth: int = 6,
     top_k: int = 20,
     edge_is_feasible: Callable[[Edge], bool] | None = None,
+    path_priority: Callable[[EnumeratedPath], float] | None = None,
 ) -> list[EnumeratedPath]:
     """Enumerate bounded simple paths with deterministic depth-first search.
 
     Cycles are forbidden, paths longer than ``max_depth`` edges are pruned,
     and only edges accepted by ``edge_is_feasible`` are traversed. Results are
-    ordered by path length and lexical node order, then truncated to ``top_k``.
+    ranked by ``path_priority`` after enumeration, then truncated to ``top_k``.
+    A priority function is required whenever more than k paths are found,
+    preventing an implicit shortest-path sampling bias.
     Worst-case time is O(b**d), where b is branching factor and d=max_depth.
     """
 
@@ -56,5 +59,10 @@ def enumerate_candidate_paths(
             raise KeyError(f"unknown source node: {source}")
         visit(source, (source,), ())
 
-    results.sort(key=lambda path: (len(path.relations), path.nodes, path.relations))
+    if len(results) > top_k and path_priority is None:
+        raise ValueError("path_priority is required when candidate count exceeds top_k")
+    if path_priority is None:
+        results.sort(key=lambda path: (path.nodes, path.relations))
+    else:
+        results.sort(key=lambda path: (-path_priority(path), path.nodes, path.relations))
     return results[:top_k]

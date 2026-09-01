@@ -2,7 +2,7 @@
 
 Reference implementation accompanying the manuscript:
 
-**Agentic AI for Pre-VAPT: Probabilistic Attack-Path Risk Scoring with Cloud-Native Validation**
+**A Reference Model for Attack-Path Prioritization in Cloud Architectures, with an Agentic Evidence Pipeline**
 
 This repository implements the mathematical core described in the paper:
 
@@ -18,13 +18,12 @@ This repository implements the mathematical core described in the paper:
 
 ## Important reproducibility note
 
-Earlier drafts reported aggregate before/after values for three AWS scenarios, but the original records do **not** provide the raw per-run observations, exact randomized variables, or sampling distributions required for independent inference. Version 0.3 does not use those aggregates as effectiveness evidence.
+Earlier drafts reported unauditable aggregate before/after values. Version 0.3 removes those obsolete data from the artifact and does not use them as effectiveness evidence.
 
 Accordingly:
 
-- `data/paper_reported_results.csv` is retained only as a legacy provenance record.
-- `examples/` contains transparent, synthetic reference scenarios that exercise the equations.
-- `data/ranking_comparison.csv` is generated from those scenarios by `experiments/ranking_comparison.py`.
+- `data/synthetic_paths_30.json` declares every feature, conditional probability, impact component, path length, and CVSS v3.1-style synthetic baseline used in the diagnostic.
+- `data/ranking_comparison.csv` is generated from that input by `experiments/ranking_comparison.py`.
 - this repository does **not** claim statistical effectiveness or regenerate unavailable experiments.
 
 This separation is intentional and prevents synthetic data from being presented as observed experimental evidence.
@@ -89,11 +88,13 @@ shared graph nodes.
 PYTHONPATH=src python experiments/ranking_comparison.py
 ```
 
-Across the six synthetic paths, Pre-VAPT score has Kendall tau-b = -0.60
-against CVSS-max and -0.47 against impact-only ranking. This exposes a length
-penalty in the multiplicative path model: longer paths can rank below shorter
-paths even when their CVSS and impact are higher. The manuscript reports this
-as a diagnostic limitation, not an effectiveness result.
+Across 30 synthetic paths, the unadjusted association with CVSS-max is near
+zero (tau-b = -0.016, exact p = 0.916), while the within-length association is
+positive (stratified tau-b = 0.896). The original six-path anti-correlation was
+therefore not systematic; it mixed the model's multiplicative length penalty
+with a max-CVSS baseline that rises with path length. The experiment also
+reports a length-normalized comparison and exact or deterministic permutation
+p-values. These are model-behavior diagnostics, not effectiveness evidence.
 
 ## Repository layout
 
@@ -114,10 +115,11 @@ examples/
   scenario_enterprise.json
 
 data/
-  paper_reported_results.csv
+  synthetic_paths_30.json
   ranking_comparison.csv
 
 experiments/
+  generate_synthetic_dataset.py
   ranking_comparison.py
 
 docs/

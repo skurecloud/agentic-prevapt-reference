@@ -16,32 +16,14 @@ The revised manuscript treats the old before/after values as legacy provenance,
 not as a result. It does not report the unauditable expert-review percentages,
 a p-value, or a confidence interval.
 
-## Aggregate calculation
-
-For the published rounded scenario scores, reductions are calculated per
-scenario before aggregation:
-
-```text
-Simple Web App: (12.4 - 2.1) / 12.4 = 83.0645%
-Microservices:  (24.8 - 6.3) / 24.8 = 74.5968%
-Enterprise:     (17.1 - 3.2) / 17.1 = 81.2865%
-Arithmetic mean                         = 79.6493% ~= 80%
-```
-
-The mean is not computed from the rounded average baseline and remediated
-scores, and it must not be interpreted as reduced incident probability.
-
-This calculation is retained only to explain the legacy CSV. It is not used in
-the version 0.3 manuscript's evaluation.
-
 ## Ranking comparison
 
-`experiments/ranking_comparison.py` reads every path in `examples/`, computes
-the version 0.3 Pre-VAPT path score, and compares it with declared `cvss_max`
-and impact-only baselines using Kendall's tau-b. The generated CSV contains all
-six inputs and outputs. Because the paths and CVSS values are synthetic, the
-comparison is descriptive. Its purpose is to test whether composition merely
-reproduces baseline ordering and to expose path-length effects.
+`experiments/generate_synthetic_dataset.py` deterministically creates 30 paths
+in three equal path-length strata. `data/synthetic_paths_30.json` records every
+input. `experiments/ranking_comparison.py` generates the result CSV and reports
+unadjusted, within-length, and length-normalized Kendall comparisons with
+p-values. Because all paths and CVSS v3.1-style values are synthetic, the
+comparison diagnoses model behavior rather than operational effectiveness.
 
 ## Required experiment record
 

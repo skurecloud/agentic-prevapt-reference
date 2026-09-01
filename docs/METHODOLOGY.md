@@ -45,9 +45,11 @@ not silently substitute an unconditional step score.
 
 `enumerate_candidate_paths()` performs deterministic bounded depth-first search
 from declared exposure nodes to declared business-asset nodes. It rejects
-cycles, applies an edge-feasibility predicate, prunes at `max_depth`, orders
-results by length and lexical identity, and returns at most `top_k`. Worst-case
-time is `O(b^d)` for branching factor `b` and depth bound `d`.
+cycles, applies a caller-supplied evidence feasibility predicate, and prunes at
+`max_depth`. If more than `top_k` paths survive, the caller must supply an
+explicit priority function; the implementation then returns the highest-
+priority paths. It never silently selects the shortest paths. Worst-case time
+is `O(b^d)` for branching factor `b` and depth bound `d`.
 
 ## Score interpretation
 

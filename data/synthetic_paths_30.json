@@ -1,0 +1,934 @@
+{
+  "attack_paths": [
+    {
+      "id": "L2-P01",
+      "steps": [
+        {
+          "exploitability": 0.35,
+          "privilege": 0.35,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.38,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.0,
+        "business_criticality": 5.5,
+        "operational_impact": 4.5
+      },
+      "cvss_max": 5.0
+    },
+    {
+      "id": "L2-P02",
+      "steps": [
+        {
+          "exploitability": 0.395,
+          "privilege": 0.47,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.425,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.35,
+        "business_criticality": 5.8,
+        "operational_impact": 4.9
+      },
+      "cvss_max": 5.1
+    },
+    {
+      "id": "L2-P03",
+      "steps": [
+        {
+          "exploitability": 0.44,
+          "privilege": 0.59,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.4
+        },
+        {
+          "exploitability": 0.47,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.7,
+        "business_criticality": 6.1,
+        "operational_impact": 5.3
+      },
+      "cvss_max": 5.2
+    },
+    {
+      "id": "L2-P04",
+      "steps": [
+        {
+          "exploitability": 0.485,
+          "privilege": 0.43,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.65
+        },
+        {
+          "exploitability": 0.515,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.05,
+        "business_criticality": 6.4,
+        "operational_impact": 5.7
+      },
+      "cvss_max": 5.3
+    },
+    {
+      "id": "L2-P05",
+      "steps": [
+        {
+          "exploitability": 0.53,
+          "privilege": 0.55,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.5
+        },
+        {
+          "exploitability": 0.56,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.4,
+        "business_criticality": 6.7,
+        "operational_impact": 6.1
+      },
+      "cvss_max": 5.4
+    },
+    {
+      "id": "L2-P06",
+      "steps": [
+        {
+          "exploitability": 0.575,
+          "privilege": 0.39,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.35
+        },
+        {
+          "exploitability": 0.605,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.75,
+        "business_criticality": 7.0,
+        "operational_impact": 6.5
+      },
+      "cvss_max": 5.5
+    },
+    {
+      "id": "L2-P07",
+      "steps": [
+        {
+          "exploitability": 0.62,
+          "privilege": 0.51,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.6
+        },
+        {
+          "exploitability": 0.65,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.1,
+        "business_criticality": 7.3,
+        "operational_impact": 6.9
+      },
+      "cvss_max": 5.6
+    },
+    {
+      "id": "L2-P08",
+      "steps": [
+        {
+          "exploitability": 0.665,
+          "privilege": 0.35,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.45
+        },
+        {
+          "exploitability": 0.695,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.45,
+        "business_criticality": 7.6,
+        "operational_impact": 7.3
+      },
+      "cvss_max": 5.7
+    },
+    {
+      "id": "L2-P09",
+      "steps": [
+        {
+          "exploitability": 0.71,
+          "privilege": 0.47,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.74,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.8,
+        "business_criticality": 7.9,
+        "operational_impact": 7.7
+      },
+      "cvss_max": 5.8
+    },
+    {
+      "id": "L2-P10",
+      "steps": [
+        {
+          "exploitability": 0.755,
+          "privilege": 0.59,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.785,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 8.15,
+        "business_criticality": 8.2,
+        "operational_impact": 8.1
+      },
+      "cvss_max": 5.9
+    },
+    {
+      "id": "L3-P01",
+      "steps": [
+        {
+          "exploitability": 0.35,
+          "privilege": 0.35,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.38,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.41,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.0,
+        "business_criticality": 5.5,
+        "operational_impact": 4.5
+      },
+      "cvss_max": 6.0
+    },
+    {
+      "id": "L3-P02",
+      "steps": [
+        {
+          "exploitability": 0.395,
+          "privilege": 0.47,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.425,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.455,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.35,
+        "business_criticality": 5.8,
+        "operational_impact": 4.9
+      },
+      "cvss_max": 6.1
+    },
+    {
+      "id": "L3-P03",
+      "steps": [
+        {
+          "exploitability": 0.44,
+          "privilege": 0.59,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.4
+        },
+        {
+          "exploitability": 0.47,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.5,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.7,
+        "business_criticality": 6.1,
+        "operational_impact": 5.3
+      },
+      "cvss_max": 6.2
+    },
+    {
+      "id": "L3-P04",
+      "steps": [
+        {
+          "exploitability": 0.485,
+          "privilege": 0.43,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.65
+        },
+        {
+          "exploitability": 0.515,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.545,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.05,
+        "business_criticality": 6.4,
+        "operational_impact": 5.7
+      },
+      "cvss_max": 6.3
+    },
+    {
+      "id": "L3-P05",
+      "steps": [
+        {
+          "exploitability": 0.53,
+          "privilege": 0.55,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.5
+        },
+        {
+          "exploitability": 0.56,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        },
+        {
+          "exploitability": 0.59,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.4,
+        "business_criticality": 6.7,
+        "operational_impact": 6.1
+      },
+      "cvss_max": 6.4
+    },
+    {
+      "id": "L3-P06",
+      "steps": [
+        {
+          "exploitability": 0.575,
+          "privilege": 0.39,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.35
+        },
+        {
+          "exploitability": 0.605,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        },
+        {
+          "exploitability": 0.635,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.75,
+        "business_criticality": 7.0,
+        "operational_impact": 6.5
+      },
+      "cvss_max": 6.5
+    },
+    {
+      "id": "L3-P07",
+      "steps": [
+        {
+          "exploitability": 0.62,
+          "privilege": 0.51,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.6
+        },
+        {
+          "exploitability": 0.65,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.68,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.1,
+        "business_criticality": 7.3,
+        "operational_impact": 6.9
+      },
+      "cvss_max": 6.6
+    },
+    {
+      "id": "L3-P08",
+      "steps": [
+        {
+          "exploitability": 0.665,
+          "privilege": 0.35,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.45
+        },
+        {
+          "exploitability": 0.695,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.725,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.45,
+        "business_criticality": 7.6,
+        "operational_impact": 7.3
+      },
+      "cvss_max": 6.7
+    },
+    {
+      "id": "L3-P09",
+      "steps": [
+        {
+          "exploitability": 0.71,
+          "privilege": 0.47,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.74,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.77,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.8,
+        "business_criticality": 7.9,
+        "operational_impact": 7.7
+      },
+      "cvss_max": 6.8
+    },
+    {
+      "id": "L3-P10",
+      "steps": [
+        {
+          "exploitability": 0.755,
+          "privilege": 0.59,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.785,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.815,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 8.15,
+        "business_criticality": 8.2,
+        "operational_impact": 8.1
+      },
+      "cvss_max": 6.9
+    },
+    {
+      "id": "L4-P01",
+      "steps": [
+        {
+          "exploitability": 0.35,
+          "privilege": 0.35,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.38,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.41,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.44,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.0,
+        "business_criticality": 5.5,
+        "operational_impact": 4.5
+      },
+      "cvss_max": 7.0
+    },
+    {
+      "id": "L4-P02",
+      "steps": [
+        {
+          "exploitability": 0.395,
+          "privilege": 0.47,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.425,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.455,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.485,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.35,
+        "business_criticality": 5.8,
+        "operational_impact": 4.9
+      },
+      "cvss_max": 7.1
+    },
+    {
+      "id": "L4-P03",
+      "steps": [
+        {
+          "exploitability": 0.44,
+          "privilege": 0.59,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.4
+        },
+        {
+          "exploitability": 0.47,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.5,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.53,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 5.7,
+        "business_criticality": 6.1,
+        "operational_impact": 5.3
+      },
+      "cvss_max": 7.2
+    },
+    {
+      "id": "L4-P04",
+      "steps": [
+        {
+          "exploitability": 0.485,
+          "privilege": 0.43,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.65
+        },
+        {
+          "exploitability": 0.515,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.545,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        },
+        {
+          "exploitability": 0.575,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.05,
+        "business_criticality": 6.4,
+        "operational_impact": 5.7
+      },
+      "cvss_max": 7.3
+    },
+    {
+      "id": "L4-P05",
+      "steps": [
+        {
+          "exploitability": 0.53,
+          "privilege": 0.55,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.5
+        },
+        {
+          "exploitability": 0.56,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        },
+        {
+          "exploitability": 0.59,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        },
+        {
+          "exploitability": 0.62,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.4,
+        "business_criticality": 6.7,
+        "operational_impact": 6.1
+      },
+      "cvss_max": 7.4
+    },
+    {
+      "id": "L4-P06",
+      "steps": [
+        {
+          "exploitability": 0.575,
+          "privilege": 0.39,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.35
+        },
+        {
+          "exploitability": 0.605,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        },
+        {
+          "exploitability": 0.635,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.665,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 6.75,
+        "business_criticality": 7.0,
+        "operational_impact": 6.5
+      },
+      "cvss_max": 7.5
+    },
+    {
+      "id": "L4-P07",
+      "steps": [
+        {
+          "exploitability": 0.62,
+          "privilege": 0.51,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.6
+        },
+        {
+          "exploitability": 0.65,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.72
+        },
+        {
+          "exploitability": 0.68,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.71,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.1,
+        "business_criticality": 7.3,
+        "operational_impact": 6.9
+      },
+      "cvss_max": 7.6
+    },
+    {
+      "id": "L4-P08",
+      "steps": [
+        {
+          "exploitability": 0.665,
+          "privilege": 0.35,
+          "attack_ease": 0.5,
+          "detection_difficulty": 0.45
+        },
+        {
+          "exploitability": 0.695,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.74
+        },
+        {
+          "exploitability": 0.725,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.755,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.45,
+        "business_criticality": 7.6,
+        "operational_impact": 7.3
+      },
+      "cvss_max": 7.7
+    },
+    {
+      "id": "L4-P09",
+      "steps": [
+        {
+          "exploitability": 0.71,
+          "privilege": 0.47,
+          "attack_ease": 0.6,
+          "detection_difficulty": 0.3
+        },
+        {
+          "exploitability": 0.74,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.76
+        },
+        {
+          "exploitability": 0.77,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.8,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 7.8,
+        "business_criticality": 7.9,
+        "operational_impact": 7.7
+      },
+      "cvss_max": 7.8
+    },
+    {
+      "id": "L4-P10",
+      "steps": [
+        {
+          "exploitability": 0.755,
+          "privilege": 0.59,
+          "attack_ease": 0.4,
+          "detection_difficulty": 0.55
+        },
+        {
+          "exploitability": 0.785,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.78
+        },
+        {
+          "exploitability": 0.815,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.8
+        },
+        {
+          "exploitability": 0.845,
+          "privilege": 0.5,
+          "attack_ease": 0.55,
+          "detection_difficulty": 0.5,
+          "conditional_probability": 0.7
+        }
+      ],
+      "impact": {
+        "data_sensitivity": 8.15,
+        "business_criticality": 8.2,
+        "operational_impact": 8.1
+      },
+      "cvss_max": 7.9
+    }
+  ]
+}
