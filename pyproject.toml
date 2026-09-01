@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agentic-prevapt"
-version = "0.3.2"
+version = "0.3.3"
 description = "Reference implementation for probabilistic Agentic Pre-VAPT risk scoring"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -26,5 +26,5 @@ dev = ["pytest>=8.0"]
 agentic-prevapt = "agentic_prevapt.cli:main"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]
