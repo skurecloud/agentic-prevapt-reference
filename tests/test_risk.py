@@ -7,6 +7,14 @@ def test_sigmoid_is_bounded():
     assert 0 < model.sigmoid(10) < 1
 
 
+def test_default_first_step_probability_has_useful_range():
+    model = RiskModel()
+    minimum = model.step_probability(StepFeatures(0, 0, 0, 0))
+    maximum = model.step_probability(StepFeatures(1, 1, 1, 1))
+    assert minimum < 0.02
+    assert maximum > 0.88
+
+
 def test_path_probability_multiplies_conditionals():
     model = RiskModel()
     first = StepFeatures(0.5, 0.5, 0.5, 0.5)

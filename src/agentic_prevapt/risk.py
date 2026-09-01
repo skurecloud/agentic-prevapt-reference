@@ -23,14 +23,14 @@ class StepFeatures:
 
     exploitability: float
     privilege: float
-    complexity: float
+    attack_ease: float
     detection_difficulty: float
     conditional_probability: float | None = None
 
     def __post_init__(self) -> None:
         _unit_interval(self.exploitability, "exploitability")
         _unit_interval(self.privilege, "privilege")
-        _unit_interval(self.complexity, "complexity")
+        _unit_interval(self.attack_ease, "attack_ease")
         _unit_interval(self.detection_difficulty, "detection_difficulty")
         if self.conditional_probability is not None:
             _unit_interval(self.conditional_probability, "conditional_probability")
@@ -56,10 +56,13 @@ class AttackPath:
     steps: tuple[StepFeatures, ...]
     impact: ImpactFeatures
     labels: tuple[str, ...] = field(default_factory=tuple)
+    cvss_max: float | None = None
 
     def __post_init__(self) -> None:
         if not self.steps:
             raise ValueError("An attack path must contain at least one step.")
+        if self.cvss_max is not None:
+            _zero_ten(self.cvss_max, "cvss_max")
 
 
 @dataclass
@@ -70,11 +73,11 @@ class RiskModel:
     probability parameters.
     """
 
-    intercept: float = -1.0
-    w_exploitability: float = 0.4
-    w_privilege: float = 0.3
-    w_complexity: float = 0.2
-    w_detection: float = 0.1
+    intercept: float = -4.0
+    w_exploitability: float = 3.0
+    w_privilege: float = 1.5
+    w_attack_ease: float = 1.0
+    w_detection: float = 0.5
 
     alpha_data: float = 0.5
     beta_business: float = 0.3
@@ -91,7 +94,7 @@ class RiskModel:
             self.intercept
             + self.w_exploitability * features.exploitability
             + self.w_privilege * features.privilege
-            + self.w_complexity * features.complexity
+            + self.w_attack_ease * features.attack_ease
             + self.w_detection * features.detection_difficulty
         )
         return self.sigmoid(score)

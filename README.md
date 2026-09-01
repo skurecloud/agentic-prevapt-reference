@@ -13,17 +13,19 @@ This repository implements the mathematical core described in the paper:
 - normalized system-risk scoring
 - Bayesian evidence updates
 - optional overlap-aware path-score aggregation with explicit joint-probability inputs
-- reproducible scenario execution with deterministic seeds
+- bounded, deterministic candidate-path enumeration
+- reproducible ranking comparison against CVSS-max and impact-only baselines
 
 ## Important reproducibility note
 
-The paper reports aggregate before/after values for three AWS scenarios. The original manuscript does **not** provide the raw per-run observations, exact randomized variables, or sampling distributions required to independently reproduce its reported p-values/confidence intervals.
+Earlier drafts reported aggregate before/after values for three AWS scenarios, but the original records do **not** provide the raw per-run observations, exact randomized variables, or sampling distributions required for independent inference. Version 0.3 does not use those aggregates as effectiveness evidence.
 
 Accordingly:
 
-- `data/paper_reported_results.csv` preserves the values reported in the manuscript.
+- `data/paper_reported_results.csv` is retained only as a legacy provenance record.
 - `examples/` contains transparent, synthetic reference scenarios that exercise the equations.
-- this repository does **not** claim to regenerate the paper's statistical significance results until the raw experiment protocol/data are added.
+- `data/ranking_comparison.csv` is generated from those scenarios by `experiments/ranking_comparison.py`.
+- this repository does **not** claim statistical effectiveness or regenerate unavailable experiments.
 
 This separation is intentional and prevents synthetic data from being presented as observed experimental evidence.
 
@@ -46,7 +48,7 @@ R_i = P(A_i) * I(A_i)
 
 P(A_i) = P(s_1) * product(P(s_j | s_(j-1)))
 
-P(s_1) = sigmoid(b + wE*E + wR*R + wC*C + wD*D)
+P(s_1) = sigmoid(-4 + 3E + 1.5R + 1A + 0.5D)
 
 For j > 1, P(s_j | s_(j-1)) must be supplied explicitly.
 
@@ -55,9 +57,14 @@ I(A_i) = alpha*Ds + beta*Br + gamma*Oi
 R_norm = 100 * (1 - exp(-R_system / tau))
 ```
 
+Here `A` is attack ease, not attack complexity. All features increase with ease
+of exploitation. The configured first-step range is approximately 0.018 to
+0.881.
+
 Bayesian evidence update:
 
 ```text
+P(E) = P(E|A_i)P(A_i) + P(E|not A_i)P(not A_i)
 P(A_i | E) = P(E | A_i) * P(A_i) / P(E)
 ```
 
@@ -76,10 +83,17 @@ path impacts.  Without explicit joints, the engine labels its result
 `additive_without_overlap_correction`; it never infers joint probabilities from
 shared graph nodes.
 
-The corrected paper value for mean scenario-specific modeled-score reduction is
-79.7%, reported as 80%.  This is the arithmetic mean of the three unrounded
-scenario reductions, not a breach-probability estimate and not a value computed
-from the rounded mean scores.
+## Reproducible ranking comparison
+
+```bash
+PYTHONPATH=src python experiments/ranking_comparison.py
+```
+
+Across the six synthetic paths, Pre-VAPT score has Kendall tau-b = -0.60
+against CVSS-max and -0.47 against impact-only ranking. This exposes a length
+penalty in the multiplicative path model: longer paths can rank below shorter
+paths even when their CVSS and impact are higher. The manuscript reports this
+as a diagnostic limitation, not an effectiveness result.
 
 ## Repository layout
 
@@ -89,6 +103,8 @@ src/agentic_prevapt/
   risk.py        scoring equations
   bayes.py       Bayesian update
   overlap.py     overlap-aware aggregation
+  enumeration.py bounded simple-path enumeration
+  ranking.py     Kendall tau-b comparison
   engine.py      end-to-end assessment
   cli.py         command-line runner
 
@@ -99,6 +115,10 @@ examples/
 
 data/
   paper_reported_results.csv
+  ranking_comparison.csv
+
+experiments/
+  ranking_comparison.py
 
 docs/
   REPRODUCIBILITY.md

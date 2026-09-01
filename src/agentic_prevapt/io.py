@@ -15,7 +15,7 @@ def load_paths(path: str | Path) -> list[AttackPath]:
             StepFeatures(
                 exploitability=s["exploitability"],
                 privilege=s["privilege"],
-                complexity=s["complexity"],
+                attack_ease=s["attack_ease"],
                 detection_difficulty=s["detection_difficulty"],
                 conditional_probability=s.get("conditional_probability"),
             )
@@ -28,6 +28,7 @@ def load_paths(path: str | Path) -> list[AttackPath]:
                 steps=steps,
                 impact=impact,
                 labels=tuple(item.get("labels", [])),
+                cvss_max=item.get("cvss_max"),
             )
         )
     return result

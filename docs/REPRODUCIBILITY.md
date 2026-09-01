@@ -12,9 +12,9 @@ It does **not yet reproduce the reported inferential statistics**, because the m
 - exact random seeds;
 - expert-review adjudication data.
 
-The revised manuscript therefore treats the three scenario results as
-descriptive case-study outputs and the expert-review percentages as unverified
-legacy aggregates. It does not report a p-value or confidence interval.
+The revised manuscript treats the old before/after values as legacy provenance,
+not as a result. It does not report the unauditable expert-review percentages,
+a p-value, or a confidence interval.
 
 ## Aggregate calculation
 
@@ -30,6 +30,18 @@ Arithmetic mean                         = 79.6493% ~= 80%
 
 The mean is not computed from the rounded average baseline and remediated
 scores, and it must not be interpreted as reduced incident probability.
+
+This calculation is retained only to explain the legacy CSV. It is not used in
+the version 0.3 manuscript's evaluation.
+
+## Ranking comparison
+
+`experiments/ranking_comparison.py` reads every path in `examples/`, computes
+the version 0.3 Pre-VAPT path score, and compares it with declared `cvss_max`
+and impact-only baselines using Kendall's tau-b. The generated CSV contains all
+six inputs and outputs. Because the paths and CVSS values are synthetic, the
+comparison is descriptive. Its purpose is to test whether composition merely
+reproduces baseline ordering and to expose path-length effects.
 
 ## Required experiment record
 

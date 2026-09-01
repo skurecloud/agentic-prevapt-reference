@@ -1,0 +1,7 @@
+rank,scenario,path,prevapt_score,cvss_max,impact_only
+1,microservices,ecs-role-abuse,1.583325,7.8,7.20
+2,microservices,service-pivot-s3,1.467089,7.5,6.95
+3,enterprise,api-credential-rds,1.407689,8.4,8.55
+4,microservices,alb-service-rds,1.359433,8.8,8.05
+5,simple,api-to-dynamodb,1.348106,8.1,7.30
+6,enterprise,public-ssrf-role-rds-exfil,0.829600,9.1,9.30

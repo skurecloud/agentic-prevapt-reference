@@ -12,6 +12,8 @@
 | Optional overlap correction with explicit joint inputs | `overlap.py`, `AssessmentEngine.assess()` |
 | End-to-end scoring | `engine.py` |
 | Reproducible scenario I/O | `io.py`, `cli.py` |
+| Bounded path enumeration | `enumeration.py` |
+| Ranking comparison | `ranking.py`, `experiments/ranking_comparison.py` |
 
 ## Scope boundary
 
@@ -19,14 +21,18 @@ The reference implementation is deliberately non-exploitative. It does not perfo
 
 ## Coefficient interpretation
 
-Default coefficients are heuristic priors:
+Version 0.3 uses an explicitly heuristic mapping:
 
-- wE = 0.4
-- wR = 0.3
-- wC = 0.2
-- wD = 0.1
+- intercept = -4.0
+- exploitability = +3.0
+- privilege/precondition ease = +1.5
+- attack ease = +1.0
+- detection difficulty = +0.5
 
-They should be calibrated before probabilities are interpreted as empirically meaningful.
+All inputs lie in `[0,1]` and increase with ease of exploitation. In particular,
+`attack_ease=1` means low complexity for the attacker. The achievable first-step
+range is `sigmoid(-4)=0.018` to `sigmoid(2)=0.881`. These coefficients are not
+fitted and must be calibrated before probabilities are interpreted empirically.
 
 ## Conditional path model
 
@@ -34,6 +40,14 @@ The logistic model produces the first-step marginal estimate `P(s_1)`. Every
 later step must provide `conditional_probability = P(s_j | s_(j-1))`. The
 engine rejects a multi-step path when a later conditional is missing; it does
 not silently substitute an unconditional step score.
+
+## Candidate-path enumeration
+
+`enumerate_candidate_paths()` performs deterministic bounded depth-first search
+from declared exposure nodes to declared business-asset nodes. It rejects
+cycles, applies an edge-feasibility predicate, prunes at `max_depth`, orders
+results by length and lexical identity, and returns at most `top_k`. Worst-case
+time is `O(b^d)` for branching factor `b` and depth bound `d`.
 
 ## Score interpretation
 
@@ -57,6 +71,8 @@ The smaller-impact rule prevents the shared term from exceeding either path's
 impact. Higher-order intersections are omitted, so this is an approximation.
 When joint inputs are absent, the engine reports an additive score and labels
 the aggregation method accordingly; it does not claim overlap correction.
+The implementation clamps the heuristic at zero. The expression is not derived
+as expected loss and is treated as a second-order penalty diagnostic.
 
 ## CVSS treatment
 

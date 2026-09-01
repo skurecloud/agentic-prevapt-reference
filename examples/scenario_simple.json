@@ -4,6 +4,7 @@
   "attack_paths": [
     {
       "id": "api-to-dynamodb",
+      "cvss_max": 8.1,
       "labels": [
         "api-bypass",
         "privilege-escalation",
@@ -13,20 +14,20 @@
         {
           "exploitability": 0.78,
           "privilege": 0.45,
-          "complexity": 0.3,
+          "attack_ease": 0.7,
           "detection_difficulty": 0.55
         },
         {
           "exploitability": 0.62,
           "privilege": 0.65,
-          "complexity": 0.45,
+          "attack_ease": 0.55,
           "detection_difficulty": 0.5,
           "conditional_probability": 0.58
         },
         {
           "exploitability": 0.55,
           "privilege": 0.6,
-          "complexity": 0.4,
+          "attack_ease": 0.6,
           "detection_difficulty": 0.42,
           "conditional_probability": 0.64
         }
