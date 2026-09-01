@@ -14,7 +14,7 @@ This repository implements the mathematical core described in the paper:
 - Bayesian evidence updates
 - optional overlap-aware path-score aggregation with explicit joint-probability inputs
 - bounded, deterministic candidate-path enumeration
-- reproducible ranking comparison against CVSS-max and impact-only baselines
+- reproducible ranking comparison and seeded randomized replication
 
 ## Important reproducibility note
 
@@ -24,6 +24,7 @@ Accordingly:
 
 - `data/synthetic_paths_30.json` declares every feature, conditional probability, impact component, path length, and CVSS v3.1-style synthetic baseline used in the diagnostic.
 - `data/ranking_comparison.csv` is generated from that input by `experiments/ranking_comparison.py`.
+- `data/randomized_replication.csv` and its JSON summary are generated from 1,000 seeded replications in which features, impacts, conditionals, and CVSS are sampled independently of path length.
 - this repository does **not** claim statistical effectiveness or regenerate unavailable experiments.
 
 This separation is intentional and prevents synthetic data from being presented as observed experimental evidence.
@@ -96,6 +97,12 @@ with a max-CVSS baseline that rises with path length. The experiment also
 reports a length-normalized comparison and exact or deterministic permutation
 p-values. These are model-behavior diagnostics, not effectiveness evidence.
 
+The fixed 30-path construction is a worked Simpson's-paradox sanity check, not
+an empirical sample. In the randomized replication, pooled tau-b has mean
+0.002 and a 95% simulation interval [-0.246, 0.251]; within-length tau-b has
+mean 0.001 and interval [-0.274, 0.260]. CVSS is sampled Uniform(4, 9)
+independently of length, features, and impact in every run.
+
 ## Repository layout
 
 ```text
@@ -117,10 +124,13 @@ examples/
 data/
   synthetic_paths_30.json
   ranking_comparison.csv
+  randomized_replication.csv
+  randomized_replication_summary.json
 
 experiments/
   generate_synthetic_dataset.py
   ranking_comparison.py
+  randomized_replication.py
 
 docs/
   REPRODUCIBILITY.md

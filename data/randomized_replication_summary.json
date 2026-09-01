@@ -1,0 +1,25 @@
+{
+  "seed": 20260901,
+  "replications": 1000,
+  "paths_per_replication": 30,
+  "cvss_distribution": "Uniform(4, 9), independent of path length and features",
+  "pooled_tau": {
+    "mean": 0.0023126436781609194,
+    "sd": 0.12633626424819186,
+    "q025": -0.24597701149425288,
+    "q975": 0.25057471264367814
+  },
+  "within_length_tau": {
+    "mean": 0.0009481481481481484,
+    "sd": 0.1399974157732906,
+    "q025": -0.2740740740740741,
+    "q975": 0.25962962962962927
+  },
+  "absolute_pooled_minus_within": {
+    "mean": 0.060999744572158364,
+    "sd": 0.047002072615251855,
+    "q025": 0.0025542784163473803,
+    "q975": 0.17846743295019143
+  },
+  "sign_disagreement_rate": 0.183
+}

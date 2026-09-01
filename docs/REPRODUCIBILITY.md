@@ -25,6 +25,19 @@ unadjusted, within-length, and length-normalized Kendall comparisons with
 p-values. Because all paths and CVSS v3.1-style values are synthetic, the
 comparison diagnoses model behavior rather than operational effectiveness.
 
+The fixed design intentionally couples CVSS to path length and reuses ten
+profiles across three length strata; it is a constructed Simpson's-paradox
+illustration, not evidence about real architectures.
+
+## Randomized replication
+
+`experiments/randomized_replication.py` runs 1,000 deterministic seeded
+replications. Each run generates 30 independent paths, balanced across lengths
+2, 3, and 4. Features, impact components, conditional probabilities, and CVSS
+are sampled independently; CVSS is Uniform(4, 9) without reference to length.
+The committed outputs report pooled and within-length tau-b distributions,
+95% simulation intervals, and pooled/stratified sign disagreement.
+
 ## Required experiment record
 
 Every experiment should write one record containing:
